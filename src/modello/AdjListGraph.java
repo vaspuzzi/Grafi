@@ -45,7 +45,7 @@ public class AdjListGraph {
 			n.setPredecessore(null);
 		}
 		
-		vertex.
+		vertex.j
 	}
 	
 	
