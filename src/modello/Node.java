@@ -7,9 +7,13 @@ public class Node {
 	
 	private NodeColor color;
 	
+	private Node predecessore;
+	
+	//visita BFS: distanza dal nodo sorgente
 	private int distance;
 	
-	private Node predecessore;
+	//visita DFS: tempo in cui il nodo viene colorato di grigio/nero
+	private int greyTime, blackTime;
 	
 	public Node(int data) {
 		this.data = data;
@@ -48,6 +52,22 @@ public class Node {
 	public String toString() {
 		
 		return "" + data;
+	}
+
+	public int getGreyTime() {
+		return greyTime;
+	}
+
+	public void setGreyTime(int greyTime) {
+		this.greyTime = greyTime;
+	}
+
+	public int getBlackTime() {
+		return blackTime;
+	}
+
+	public void setBlackTime(int blackTime) {
+		this.blackTime = blackTime;
 	}
 	
 	

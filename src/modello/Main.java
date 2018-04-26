@@ -22,6 +22,10 @@ public class Main {
 		List<Node> nodeList = graph.getVertices();
 		Node sorgente = nodeList.get(0);
 		graph.printBFS(sorgente);
+		
+		System.out.println();
+		
+		graph.printDFS();
 	}
 
 }

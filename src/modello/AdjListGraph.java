@@ -84,6 +84,51 @@ public class AdjListGraph {
 			System.out.print(estratto + ",");
 		}
 	}
+
+	public void printDFS() {
+		Set<Node> keyset = adjList.keySet();
+		
+		int time = 0;
+		
+		for(Node n : keyset) {
+			n.setColor(NodeColor.BIANCO);
+			n.setPredecessore(null);
+		}
+		
+		time = 0;
+		
+		for(Node n : keyset) {
+			if(n.getColor() == NodeColor.BIANCO) 
+				visitaDFS(n, time);
+		}
+		
+		
+	}
+	
+	private void visitaDFS(Node n, int time) {
+		n.setColor(NodeColor.GRIGIO);
+		
+		System.out.print(n + ",");
+		
+		n.setGreyTime(time);
+		time++;
+		
+		List<Node> adj = adjList.get(n);
+		
+		for(Node x : adj) {
+			if(x.getColor() == NodeColor.BIANCO) {
+				x.setPredecessore(n);
+				
+				visitaDFS(x, time);
+			}
+		}
+		
+		n.setColor(NodeColor.NERO);
+		n.setBlackTime(time);
+		time++;
+		
+	}
+	
 	
 	public List<Node> getVertices() {
 		List<Node> res = new LinkedList<>();
