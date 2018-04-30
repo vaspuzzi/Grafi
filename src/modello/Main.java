@@ -21,11 +21,21 @@ public class Main {
 				
 		List<Node> nodeList = graph.getVertices();
 		Node sorgente = nodeList.get(0);
+		
+		System.out.print("BFS: ");
 		graph.printBFS(sorgente);
+		
+		System.out.print("DFS:");
+		
+		graph.printDFS();
 		
 		System.out.println();
 		
-		graph.printDFS();
+		List<Node> topsort = graph.topologicalSort();
+		
+		System.out.println("TOPOLOGICAL SORT: " + topsort);
+		
+		
 	}
 
 }

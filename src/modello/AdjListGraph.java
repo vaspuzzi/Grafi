@@ -1,5 +1,6 @@
 package modello;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -129,6 +130,21 @@ public class AdjListGraph {
 		
 	}
 	
+	
+	public List<Node> topologicalSort() {
+		printDFS();
+		
+		List<Node> res = getVertices();
+		
+		res.sort(new Comparator<Node>() {
+			@Override
+			public int compare(Node o1, Node o2) {
+				return o1.getBlackTime() <= o2.getBlackTime() ? -1 : +1;
+			}
+		});
+		
+		return res;
+	}
 	
 	public List<Node> getVertices() {
 		List<Node> res = new LinkedList<>();
