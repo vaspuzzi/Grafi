@@ -1,8 +1,11 @@
-package modello;
+package algoritmi;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import algoritmi.modello.AdjListGraph;
+import algoritmi.modello.Node;
 
 public class Main {
 

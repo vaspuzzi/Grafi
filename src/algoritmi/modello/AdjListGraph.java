@@ -1,4 +1,4 @@
-package modello;
+package algoritmi.modello;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import modello.Node.NodeColor;
+import algoritmi.modello.Node.NodeColor;
 
 
 public class AdjListGraph {

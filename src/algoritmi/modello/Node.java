@@ -1,4 +1,4 @@
-package modello;
+package algoritmi.modello;
 
 public class Node {
 	private int data;
