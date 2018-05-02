@@ -6,6 +6,7 @@ import java.util.Map;
 
 import algoritmi.modello.AdjListGraph;
 import algoritmi.modello.Node;
+import algoritmi.modello.nodetypes.BFSNode;
 
 public class Main {
 
@@ -26,7 +27,7 @@ public class Main {
 		Node sorgente = nodeList.get(0);
 		
 		System.out.print("BFS: ");
-		graph.printBFS(sorgente);
+		graph.printBFS((BFSNode) sorgente);
 		
 		System.out.print("DFS:");
 		

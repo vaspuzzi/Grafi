@@ -8,24 +8,27 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import algoritmi.modello.Node.NodeColor;
+import algoritmi.modello.nodetypes.BFSNode;
+import algoritmi.modello.nodetypes.ColoredNode.NodeColor;
 
 
-public class AdjListGraph {
+
+
+public class AdjListGraph<NodeType extends Node> {
 	
-	private Map<Node,List<Node>> adjList;
-	private Queue<Node> q;
+	private Map<NodeType,List<NodeType>> adjList;
+	private Queue<NodeType> q;
 	
 	public AdjListGraph() {
-		adjList = new HashMap<Node,List<Node>>();
+		adjList = new HashMap<NodeType,List<NodeType>>();
 		q = new LinkedList<>();
 	}
 	
-	private void addNode(Node vertex) {
+	private void addNode(NodeType vertex) {
 		adjList.put(vertex, new LinkedList<>());
 	}
 	
-	public void addEdges(Node vertex1, Node vertex2) {
+	public void addEdges(NodeType vertex1, NodeType vertex2) {
 		if(vertex1.equals(vertex2)) 
 			throw new IllegalArgumentException();
 		
@@ -36,8 +39,8 @@ public class AdjListGraph {
 		if(!adjList.containsKey(vertex2))
 			addNode(vertex2);
 		
-		List<Node> adj1 = adjList.get(vertex1);
-		List<Node> adj2 = adjList.get(vertex2);
+		List<NodeType> adj1 = adjList.get(vertex1);
+		List<NodeType> adj2 = adjList.get(vertex2);
 		
 		
 		
@@ -46,44 +49,6 @@ public class AdjListGraph {
 			adj1.add(vertex2);
 		if(!adj2.contains(vertex1))
 			adj2.add(vertex1);
-	}
-	
-	public void printBFS(Node root) {
-		
-		
-		Set<Node> keyset = adjList.keySet();
-	
-		
-		
-		for(Node n : keyset) {
-			n.setColor(NodeColor.BIANCO);
-			n.setDistance(9999);
-			n.setPredecessore(null);
-		}
-		
-		root.setColor(NodeColor.GRIGIO);
-		root.setDistance(0);
-		root.setPredecessore(null);
-		
-		q.add(root);
-		// da qui q contiene solo i vertici grigi
-		while(!q.isEmpty()) {
-			Node testa = q.element();
-			
-			// scorre la lista di adiacenza del nodo estratto dalla coda
-			for(Node listElem : adjList.get(testa) ) {
-				if(listElem.getColor() == NodeColor.BIANCO) {
-					listElem.setColor(NodeColor.GRIGIO);
-					listElem.setDistance(testa.getDistance() + 1);
-					listElem.setPredecessore(testa);
-					q.add(listElem);
-				}	
-			}
-		
-			Node estratto = q.remove();
-			estratto.setColor(NodeColor.NERO);
-			System.out.print(estratto + ",");
-		}
 	}
 
 	public void printDFS() {
@@ -146,15 +111,19 @@ public class AdjListGraph {
 		return res;
 	}
 	
-	public List<Node> getVertices() {
-		List<Node> res = new LinkedList<>();
+	public List<NodeType> getVertices() {
+		List<NodeType> res = new LinkedList<>();
 
-		Set<Node> verticesList = adjList.keySet();
+		Set<NodeType> verticesList = adjList.keySet();
 
-		for(Node n : verticesList)
+		for(NodeType n : verticesList)
 			res.add(n);
 			
 		return res;
+	}
+
+	public Map<NodeType, List<NodeType>> getAdjList() {
+		return adjList;
 	}
 	
 	
